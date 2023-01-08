@@ -17,6 +17,15 @@ Made by [Nest](https://github.com/nestjs/nest) framework TypeScript.
 $ yarn install
 ```
 
+## Build database
+
+```bash
+docker-compose up -d
+```
+
+## Environment file
+Take environment variables from the __env.template__ and create the __.env__ file before running the application.
+
 ## Running the app
 
 ```bash
