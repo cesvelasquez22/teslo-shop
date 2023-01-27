@@ -39,6 +39,14 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
+## Populate database - Development
+
+You can populate the database by calling the next request:
+
+```
+localhost:3000/api/seed
+```
+
 ## Test
 
 ```bash
