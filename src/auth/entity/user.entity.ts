@@ -8,13 +8,13 @@ export class User {
   @Column('text', { unique: true })
   email: string;
 
-  @Column('text')
+  @Column('text', { select: false })
   password: string;
 
   @Column('text')
   fullName: string;
 
-  @Column('bool', { default: true })
+  @Column('bool', { default: true, select: false })
   active: boolean;
 
   @Column('text', { array: true, default: ['user'] })
