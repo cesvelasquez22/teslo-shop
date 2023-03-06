@@ -20,7 +20,7 @@ export class User {
   @Column('text')
   fullName: string;
 
-  @Column('bool', { default: true, select: false })
+  @Column('bool', { default: true })
   active: boolean;
 
   @Column('text', { array: true, default: ['user'] })
