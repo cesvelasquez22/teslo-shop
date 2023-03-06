@@ -137,6 +137,6 @@ export class ProductsService {
       throw new BadRequestException(error.detail);
     }
     this.logger.error(error);
-    throw new InternalServerErrorException('Something went wrong');
+    throw new InternalServerErrorException('Products: Something went wrong, check logs on server');
   }
 }
