@@ -11,7 +11,7 @@ import { User } from '../entity/user.entity';
 import { META_ROLES } from '../decorators';
 
 @Injectable()
-export class UserRoleGuard implements CanActivate {
+export class RolesGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
   canActivate(
     context: ExecutionContext,
