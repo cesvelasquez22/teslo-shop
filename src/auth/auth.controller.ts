@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
+import { GetUser } from './decorator/get-user.decorator';
 import { CreateUserDto, LoginUserDto } from './dto';
+import { User } from './entity/user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -19,10 +21,10 @@ export class AuthController {
 
   @Get('user')
   @UseGuards(AuthGuard())
-  testProtectedRequest() {
+  getUser(@GetUser() user: User) {
     return {
       ok: true,
-      message: 'Get user',
+      user,
     };
   }
 }
