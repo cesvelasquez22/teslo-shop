@@ -43,6 +43,7 @@ export class FilesController {
     file: Express.Multer.File,
   ) {
     // const secureUrl = `${file.filename}`;
+    // TODO: Save files on cloudinary
     const secureUrl = `${this.configService.get('HOST_API')}/files/product/${
       file.filename
     }`;
