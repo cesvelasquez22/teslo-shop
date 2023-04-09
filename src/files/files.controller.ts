@@ -9,30 +9,17 @@ import {
   Param,
   Res,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
-import { diskStorage } from 'multer';
 import { FilesService } from './files.service';
-import { fileNamer } from './helpers/file-namer';
 
 @Controller('files')
 export class FilesController {
-  constructor(
-    private readonly filesService: FilesService,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor(private readonly filesService: FilesService) {}
 
   @Post('product')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './static/products',
-        filename: fileNamer,
-      }),
-    }),
-  )
-  uploadProductImage(
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadProductImage(
     @UploadedFile(
       new ParseFilePipe({
         validators: [
@@ -42,11 +29,7 @@ export class FilesController {
     )
     file: Express.Multer.File,
   ) {
-    // const secureUrl = `${file.filename}`;
-    // TODO: Save files on cloudinary
-    const secureUrl = `${this.configService.get('HOST_API')}/files/product/${
-      file.filename
-    }`;
+    const secureUrl = await this.filesService.uploadImage(file);
 
     return { secureUrl };
   }
