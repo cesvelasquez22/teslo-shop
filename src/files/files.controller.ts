@@ -29,11 +29,9 @@ export class FilesController {
     )
     file: Express.Multer.File,
   ) {
-    console.log({ file });
-    return { message: 'ok' };
-    // const secureUrl = await this.filesService.uploadImage(file);
+    const secureUrl = await this.filesService.uploadImage(file);
 
-    // return { secureUrl };
+    return { secureUrl };
   }
 
   @Get('/product/:imageName')

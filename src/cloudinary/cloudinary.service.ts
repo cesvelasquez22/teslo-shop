@@ -10,8 +10,9 @@ export class CloudinaryService {
     file: Express.Multer.File,
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
     return new Promise((resolve, reject) => {
+      const public_id = file.originalname.split('.')[0];
       const upload = v2.uploader.upload_stream(
-        { folder: 'nest-teslo-shop'},
+        { folder: 'nest-teslo-shop', use_filename: true, public_id },
         (error, result) => {
           if (error) return reject(error);
           resolve(result);
