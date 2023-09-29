@@ -29,15 +29,15 @@ interface SeedData {
 export const initialData: SeedData = {
   users: [
     {
-      email: 'test1@mail.com',
-      fullName: 'Test User 1',
-      password: 'test1',
+      email: 'seed1@mail.com',
+      fullName: 'Seed User 1',
+      password: 'Seed1111',
       roles: ['user','admin'],
     },
     {
-      email: 'test2@mail.com',
-      fullName: 'Test User 2',
-      password: 'test2',
+      email: 'seed2@mail.com',
+      fullName: 'Seed User 2',
+      password: 'Seed2222',
       roles: ['user'],
     }
   ],
